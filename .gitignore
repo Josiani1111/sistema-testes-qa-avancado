@@ -2,3 +2,7 @@
 __pycache__/
 *.py[cod]
 .pytest_cache/
+
+# Arquivos gerados pela cobertura de testes
+.coverage
+htmlcov/
