@@ -1,4 +1,5 @@
-from fastapi import FastAPI
+
+from fastapi import FastAPI, HTTPException
 
 app = FastAPI(
     title="API de Testes de Qualidade",
@@ -19,8 +20,14 @@ def health_check():
 
 @app.get("/produtos/{produto_id}")
 def consultar_produto(produto_id: int):
+    if produto_id != 1:
+        raise HTTPException(
+            status_code=404,
+            detail="Produto não encontrado",
+        )
+
     return {
-        "id": produto_id,
+        "id": 1,
         "nome": "Notebook",
         "preco": 4500.00,
     }
